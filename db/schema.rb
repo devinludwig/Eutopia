@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222171007) do
+ActiveRecord::Schema.define(version: 20170222210554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "nations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "government"
+    t.string   "economy"
+    t.string   "geography"
+    t.integer  "capital",    default: 100
+    t.integer  "population", default: 1000000
+    t.integer  "stability",  default: 100
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170222171007) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+ prepend_before_filter :require_no_authentication, :only => [ :new, :create, :cancel ]
+
   protected
 
   def sign_up_params
