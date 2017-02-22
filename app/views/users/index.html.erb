@@ -1,0 +1,5 @@
+<ul class="collection">
+  <% User.all.each do |user| %>
+    <li class="collection-item"><%= user.email %></li>
+  <% end %>
+</ul>
