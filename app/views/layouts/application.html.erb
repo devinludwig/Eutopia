@@ -24,6 +24,7 @@
               <li><%= link_to "Create a New Nation!", new_user_nation_path(current_user), href: '#modal3', class: 'modal-trigger' %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             </ul>
+            <%= render 'nations/form' %>
            <% else %>
              <li><%= link_to "Login", new_user_session_path, href: '#modal2', class: 'modal-trigger', remote: true %></li>
            <% end %>
@@ -35,7 +36,6 @@
     <p class="alert"><%= alert %></p>
     <div class="container">
       <%= yield %>
-      <%= render 'nations/form' %>
     </div>
   </body>
 </html>
