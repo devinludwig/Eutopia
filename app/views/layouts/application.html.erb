@@ -2,31 +2,40 @@
 <html>
   <head>
     <title>Eutopia</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav>
-    <div class="nav-wrapper black">
-      <a href="/" class="brand-logo">Eutopia</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-        <% if user_signed_in? %>
-          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li> |
-          <strong> <%= current_user.email %></strong>
-         <% else %>
-           <li><%= link_to "Login", new_user_session_path, href: '#modal2', class: 'modal-trigger', remote: true %></li>
-         <% end %>
-      </ul>
-    </div>
-  </nav>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
   <body>
-    <%= yield %>
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="/" class="brand-logo">Eutopia</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+          <% if user_signed_in? %>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><strong> <%= current_user.email %></strong><i class="material-icons right">arrow_drop_down</i></a></li>
+            <ul id="dropdown1" class="dropdown-content">
+              <li><%= link_to "Player Console", current_user %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Create a New Nation!", new_user_nation_path(current_user), href: '#modal3', class: 'modal-trigger' %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            </ul>
+           <% else %>
+             <li><%= link_to "Login", new_user_session_path, href: '#modal2', class: 'modal-trigger', remote: true %></li>
+           <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <%= yield %>
+      <%= render 'nations/form' %>
+    </div>
   </body>
 </html>

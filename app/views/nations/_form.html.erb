@@ -1,0 +1,26 @@
+<div id="modal3" class="modal modal-fixed-footer">
+  <%= render "layouts/errors", :object => @nation %>
+  <div class="modal-content">
+    <%= form_for [current_user, @nation], remote: true do |f| %>
+      <div class="input-field">
+        <%= f.text_field :name %>
+        <%= f.label :name %>
+      </div>
+
+      <div class="input-field col s12">
+        <%= f.select(:government) do %>
+          <option value="" disabled selected>Choose your government</option>
+          <% ['Democracy', 'Communism', 'Fascism', 'Monarchy', 'Oligarchy'].each do |c| -%>
+            <%= content_tag(:option, c) %>
+          <% end %>
+        <% end %>
+        <label>Government</label>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Start Game", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

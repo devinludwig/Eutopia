@@ -1,0 +1,6 @@
+<h1><%= current_user.username %></h1>
+<% if current_user.nations.empty? %>
+   <%= link_to "Create a Nation!", new_user_nation_path(current_user), href: '#modal3', class: 'modal-trigger btn' %>
+<% end %>
+
+<%= render 'nations/form' %>
