@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'materialize-sass'
 gem 'devise'
+gem "paperclip", "~> 5.0.0"
 gem 'rails_admin', '~> 1.0'
 
 group :development, :test do
@@ -26,6 +27,8 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'simplecov', require: false
 end
 
 group :development do
