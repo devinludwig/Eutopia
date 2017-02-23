@@ -23,9 +23,9 @@
               <li><%= link_to "Player Console", current_user %></li>
               <li class="divider"></li>
               <li><%= link_to "Create a New Nation!", new_user_nation_path(current_user), href: '#modal3', class: 'modal-trigger' %></li>
+              <li><%= link_to 'Edit Profile', edit_user_registration_path, href: '#modal4', class: 'modal-trigger' %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             </ul>
-            <%= render 'nations/form' %>
            <% else %>
              <li><%= link_to "Login", new_user_session_path, href: '#modal2', class: 'modal-trigger', remote: true %></li>
            <% end %>
@@ -38,5 +38,7 @@
     <div class="container">
       <%= yield %>
     </div>
+    <%= render 'nations/form' %>
+    <%= render 'users/registrations/edit' %>
   </body>
 </html>

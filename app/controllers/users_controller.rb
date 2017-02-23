@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @nation= Nation.new
   end
 
   def show
